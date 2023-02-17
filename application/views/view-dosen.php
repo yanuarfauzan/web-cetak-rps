@@ -2,7 +2,14 @@
     <div class="row">
         <div class="col">
 
-            <a href="<?= base_url('Dosen/tambahDosen'); ?>" class="btn btn-primary float-right"><i class="fa fa-solid fa-plus"></i> Tambah Dosen</a>
+                            <form action="" method="POST">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Cari Data Dosen.." name="keyword">
+                                <button class="btn btn-outline-primary" type="submit" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i> Cari</button>
+                            </form>
+                            <a href="<?= base_url('Dosen/tambahDosen'); ?>" class="btn btn-primary ml-3 float-right"><i class="fa fa-solid fa-plus"></i> Tambah Dosen</a>
+                
+                </div>
         </div>
     </div>
 </div>
@@ -15,6 +22,20 @@
         </div>
     </div>
 </div>
+<?php 
+if(empty($dosen)){
+?>   
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="alert alert-danger" role="alert">
+              Data Tidak Ditemukan!
+            </div> 
+            
+        </div>
+    </div>
+</div>
+<?php } ?>
 <div class="container vh-100">
     <div class="row">
         <div class="col">

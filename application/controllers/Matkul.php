@@ -13,6 +13,9 @@ class Matkul extends Ci_Controller
             'matkul' => $this->Matkul_model->getAllMatkul(),
             'title' => 'WEB RPS | Matakuliah'
         ];
+        if($this->input->post('keyword')){
+            $data['matkul'] = $this->Matkul_model->cariDataMatkul();
+        }
         $this->load->view('template/header', $data);
         $this->load->view('view-matkul', $data);
         $this->load->view('template/footer');

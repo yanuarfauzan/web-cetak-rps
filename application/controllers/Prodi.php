@@ -8,6 +8,9 @@ class Prodi extends Ci_Controller {
     public function index(){
         $data['title'] = 'WEB RPS | Program Studi';
         $data['prodi'] = $this->Prodi_model->getAllProdi();
+        if($this->input->post('keyword')){
+            $data['prodi'] = $this->Prodi_model->cariDataProdi();
+        }
         $this->load->view('template/header', $data);
         $this->load->view('view-prodi', $data);
         $this->load->view('template/footer');

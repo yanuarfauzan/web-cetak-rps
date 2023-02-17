@@ -15,6 +15,9 @@ class Dosen extends Ci_Controller
             'title' => 'WEB RPS | Dosen',
             'dosen' => $this->Dosen_model->getAllDosen()
         ];
+        if($this->input->post('keyword')){
+            $data['dosen'] = $this->Dosen_model->cariDataDosen();
+        }
         $this->load->view('template/header', $data);
         $this->load->view('view-dosen', $data);
         $this->load->view('template/footer');

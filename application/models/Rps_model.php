@@ -75,4 +75,15 @@ class Rps_model extends Ci_Model
         $this->db->where('id', $id);
         $this->db->update('rps', $data);
     }
+    public function cariDataRps(){
+        $keyword = $this->input->post('keyword');
+        $this->db->like('nomor_rps', $keyword);
+        $this->db->or_like('kode_matkul', $keyword);
+        $this->db->or_like('nama_matkul', $keyword);
+        $this->db->or_like('tgl_disusun', $keyword);
+        $this->db->select('*');
+        $this->db->from('rps');
+        $this->db->join('tb_matkul', 'tb_matkul.id_mk = rps.id_matkul', 'left');
+        return $this->db->get()->result_array();
+    }
 }

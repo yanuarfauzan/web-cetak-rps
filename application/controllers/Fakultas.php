@@ -9,7 +9,9 @@ class Fakultas extends Ci_Controller{
     public function index(){
         $data['title'] = 'WEB RPS | Fakultas';
         $data['fakultas'] = $this->Fakultas_model->getAllFakultas();
-        
+        if($this->input->post('keyword')){
+            $data['fakultas'] = $this->Fakultas_model->cariDataFakultas();
+        }
         $this->load->view('template/header', $data);
         $this->load->view('view-fakultas', $data);
         $this->load->view('template/footer');

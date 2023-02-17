@@ -14,7 +14,9 @@ class Rps extends Ci_Controller
             'dataRps' => $this->Rps_model->getAllDataRps(),
             'title' => 'WEB RPS | RPS'
         ];
-
+        if($this->input->post('keyword')){
+            $data['dataRps'] = $this->Rps_model->cariDataRps();
+        }
         $this->load->view('template/header', $data);
         $this->load->view('view-rps', $data);
         $this->load->view('template/footer');
