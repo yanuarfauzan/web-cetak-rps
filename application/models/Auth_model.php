@@ -10,13 +10,11 @@ class Auth_model extends Ci_Model
     {
         return $this->db->query("SELECT * FROM tb_user WHERE email='$email' AND user_password=SHA2('$password', 224 )");
     }
-    public function is_login()
-    {
-        $is_login = $this->session->userdata('is_login');
-        if ($is_login) {
-            return true;
-        } else {
-            return false;
-        }
+    
+    public function get_user($userEmail, $password){
+        $this->db->where('user_email', $userEmail);
+        $this->db->where('user_password', $password);
+        return $this->db->get('tb_user')->row_array();
+
     }
 }

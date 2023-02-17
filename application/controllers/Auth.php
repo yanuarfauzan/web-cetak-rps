@@ -19,32 +19,22 @@ class Auth extends Ci_Controller
 	}
 	}
 	private function _login(){
-		$email = $this->input->post('email');
+		$userEmail = $this->input->post('email');
 		$password = $this->input->post('password');
-		$user = $this->db->get_where('tb_user', ['user_email' => $email])->row_array();
-		$pass = $this->db->get_where('tb_user', ['user_password' => $password])->row_array();
+		$user = $this->Auth_model->get_user($userEmail, $password);
 		// jika usernya ada
 		if($user) {
-			if($pass){
-				$data = [
-				'email' => $user['user_email']
-				];
-
-				$this->session->set_userdata($data);
+				$this->session->set_userdata('login', TRUE);
 				redirect('Home');
-			}else{
+				}else{
 
 				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong Password</div>');
 				redirect('Auth');
 			}
-		}else{
-			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered</div>');
-			redirect('Auth');
 		}
-	}
 
 	public function logout(){
-		$this->session->unset_userdata('email');
+		$this->session->unset_userdata('login');
 
 		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You have been logged out</div>');
 		redirect('Auth');

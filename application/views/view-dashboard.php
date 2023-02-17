@@ -1,3 +1,9 @@
+<?php 
+    if ($this->session->userdata('login') != TRUE){
+            redirect('Auth');
+    }
+?>
+
 <div class="container">
     <div class="row">
         <div class="col">
