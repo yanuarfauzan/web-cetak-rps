@@ -38,8 +38,6 @@
                    </div>
                </div>
 
-               <!-- my fontawesome -->
-               <script src="https://kit.fontawesome.com/YOUR-KIT-ID.js" crossorigin="anonymous"></script>
 
                <!-- Bootstrap core JavaScript-->
                <script src="vendor/jquery/jquery.min.js"></script>
@@ -57,6 +55,9 @@
                <!-- Page level custom scripts -->
                <script src="js/demo/chart-area-demo.js"></script>
                <script src="js/demo/chart-pie-demo.js"></script>
+
+               <!-- my fontawesome js -->
+               <script src="https://kit.fontawesome.com/329aeafc83.js" crossorigin="anonymous"></script>
 
                </body>
 
